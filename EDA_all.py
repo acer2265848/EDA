@@ -37,3 +37,9 @@ df_all_Filter = df_all_Filter.sort_values(by=["訴訟編號", "EY_PK", "證交�
 df1 = df_DTCC.copy()
 df1 = df1.drop(["備註"], axis=1)
 df1 = df1[~df1["訴訟編號"].isin(except_Acc)]
+
+#%% 時間處理
+df['date'] = pd.to_datetime(df['date'])
+start_date = '2022-01-02'
+end_date = '2022-01-04'
+filtered_df = df.loc[(df['date'] >= start_date) & (df['date'] <= end_date)]

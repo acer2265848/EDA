@@ -43,3 +43,14 @@ df['date'] = pd.to_datetime(df['date'])
 start_date = '2022-01-02'
 end_date = '2022-01-04'
 filtered_df = df.loc[(df['date'] >= start_date) & (df['date'] <= end_date)]
+key_prem = pd.merge(key_prem, aml_po, how = 'left', on = ['CODE_POLICY_NO', 'SOURCE_SYSTEM'])
+#%%
+
+from ydata_profiling import ProfileReport
+
+df = pd.DataFrame(np.random.rand(100, 5), columns=["a", "b", "c", "d", "e"])
+#%%
+profile = ProfileReport(df, title="Profiling Report").to_notebook_iframe()
+
+profile.to_file("your_report.html")
+# %%
